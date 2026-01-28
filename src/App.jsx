@@ -1,0 +1,54 @@
+import React, { useEffect, useState } from 'react'
+import Card from './components/Card'
+
+
+
+const App = () => {
+
+  const [images, setImages] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [term, setTerm] = useState('')
+
+  const url = `https://pixabay.com/api/?key=54404498-00c670ba71927140ff4d25e5e&q=yellow+flowers&image_type=photo&pretty=true`
+
+
+  const fetchData = async () =>  {
+    setIsLoading(true)
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+      setImages(data.hits)
+      setIsLoading(false)
+    } catch (e) {
+      console.log(e)
+      setIsLoading(false)
+    }
+  }
+
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  console.log(images)
+
+  return (
+    <div>
+      <h1>Hello World!</h1>
+      <div>
+        <Card />
+      </div>
+      <div>
+        {
+          images.map((item) => {
+            return (
+              item.id
+            )
+          })
+        }
+      </div>
+    </div>
+  )
+}
+
+export default App
