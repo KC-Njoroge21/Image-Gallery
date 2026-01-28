@@ -1,26 +1,26 @@
 import React from 'react'
 
-const Card = () => {
+const Card = (props) => {
   return (
     <div className=''>
-      <img className='' src="https://fastly.picsum.photos/id/308/300/200.jpg?hmac=eKnwYo1eUzMt3_g3nuv7UuhC8xbc7meak7wPj9sdQdk" alt="img" />
+      <img className='' src={props.image.webformatURL} alt="img" />
 
       <div>
         <div>
-          Photo by John Doe
+          Photo by {props.image.user}
         </div>
         <ul>
           <li>
             <strong>Views:</strong>
-            4000
+            {props.image.views}
           </li>
           <li>
             <strong>Downloads:</strong>
-            4000
+            {props.image.downloads}
           </li>
           <li>
             <strong>Likes:</strong>
-            4000
+            {props.image.likes}
           </li>
         </ul>
       </div>

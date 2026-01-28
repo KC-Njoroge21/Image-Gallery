@@ -33,20 +33,17 @@ const App = () => {
   console.log(images)
 
   return (
-    <div>
-      <h1>Hello World!</h1>
-      <div>
-        <Card />
-      </div>
-      <div>
+    <div className=''>
+      <div className='grid grid-cols-3 gap-4'>
         {
-          images.map((item) => {
+          images.map((img, ) => {
             return (
-              item.id
+              <Card key={img.id} image={img}/>
             )
           })
         }
       </div>
+      
     </div>
   )
 }
