@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <div className=''>
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid grid-cols-3 gap-8 p-8'>
         {
           images.map((img, ) => {
             return (
