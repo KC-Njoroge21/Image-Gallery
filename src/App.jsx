@@ -39,6 +39,12 @@ const App = () => {
   return (
     <div className=''>
       <ImageSearch searchText={() => {setTerm(text)}} />
+
+{
+  !isLoading && images.length === 0 && <div className='text-center font-semibold text-lg'>No Images found</div>
+}
+
+
       {
         isLoading ? <div className='text-center font-semibold text-lg'>Loading Please Wait...</div> :
         <div className='grid lg:grid-cols-3 gap-8 md:grid-cols-2 sm:grid-cols-1 p-8'>
