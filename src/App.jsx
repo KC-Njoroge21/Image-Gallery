@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import Card from './components/Card'
 import ImageSearch from './components/ImageSearch'
+import { GlobalContext } from './Context/Context'
 
 
 
@@ -8,9 +9,11 @@ const App = () => {
 
   const [images, setImages] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [term, setTerm] = useState('')
 
-  const url = `https://pixabay.com/api/?key=54404498-00c670ba71927140ff4d25e5e&q=yellow+flowers&image_type=photo&pretty=true`
+  const {term, setTerm} = useContext(GlobalContext)
+  
+
+  const url = `https://pixabay.com/api/?key=54404498-00c670ba71927140ff4d25e5e&q=${term}&image_type=photo&pretty=true`
 
 
   const fetchData = async () =>  {
@@ -29,16 +32,16 @@ const App = () => {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [term])
 
   console.log(images)
 
   return (
     <div className=''>
-      <ImageSearch />
+      <ImageSearch searchText={() => {setTerm(text)}} />
       {
         isLoading ? <div className='text-center font-semibold text-lg'>Loading Please Wait...</div> :
-        <div className='grid grid-cols-3 gap-8 p-8'>
+        <div className='grid lg:grid-cols-3 gap-8 md:grid-cols-2 sm:grid-cols-1 p-8'>
         {
           images.map((img, ) => {
             return (
